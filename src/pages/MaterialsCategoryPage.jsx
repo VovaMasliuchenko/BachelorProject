@@ -13,6 +13,7 @@ function MaterialsCategoryPage() {
 
     const materialsCategoryCollectionRef = collection(db, "materialsCategoryProducts")
     const cartProductsCollectionRef = collection(db, "cartProducts")
+    const favoriteProductsCollectionRef = collection(db, "favoriteProducts")
 
     const [currentPage, setCurrentPage] = useState(1)
     const recordsPerPage = 8;
@@ -45,6 +46,13 @@ function MaterialsCategoryPage() {
         })
     }
 
+    const addProductToFavorites = async (imageUrl, type, price) => {
+        await addDoc(favoriteProductsCollectionRef,{type:type,price:price,imageUrl:imageUrl,userId:sessionStorage.getItem("user-id")})
+        .then(() => {
+            toast.success("Product was added to your favorites!")
+        })
+    }
+
     useEffect(() => {
         const getProducts = async () => {
             const data = await getDocs(materialsCategoryCollectionRef);
@@ -73,7 +81,7 @@ function MaterialsCategoryPage() {
                         <div className="flex flex-col">
                         <div class="px-5 pb-5 flex items-center justify-between">
                             <h5 class="text-xl font-inter font-regular">{product.name}</h5>
-                            <FaRegHeart/>
+                            <button onClick={() => addProductToFavorites(product.imageUrl, product.name, product.price)}><FaRegHeart/></button>
                         </div>
                         <div class="px-5 pb-5 flex items-center justify-between">
                             <h5 class="text-button-orange font-inter font-regular">{product.price}$</h5>                 

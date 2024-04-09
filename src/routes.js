@@ -7,6 +7,8 @@ import CategoryPage from "./pages/CategoryPage";
 import MaterialsCategoryPage from "./pages/MaterialsCategoryPage";
 import AddProductPage from "./pages/AddProductPage";
 import TurnkeyConstructionCategoryPage from "./pages/TurnkeyConstructionCategoryPage";
+import FavoritesPage from "./pages/FavoritesPage";
+import PersonalAccountPage from "./pages/PersonalAccountPage";
 import CartPage from "./pages/CartPage";
 
 function Router() {
@@ -47,8 +49,16 @@ function Router() {
                         element={<CartPage/>}
                     />
                     <Route
+                        path="/favoritesPage"
+                        element={<FavoritesPage/>}
+                    />
+                    <Route
                         path="/welcomePage"
                         element={<WelcomePage/>}
+                    />
+                    <Route
+                        path="/personalAccountPage"
+                        element={<PersonalAccountPage/>}
                     />
             </Routes>
         </BrowserRouter>
