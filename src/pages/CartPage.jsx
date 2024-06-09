@@ -75,6 +75,9 @@ function CartPage() {
 
     useEffect(() => {
         getCartProducts()
+    }, [])
+
+    useEffect(() => {
         setOrderTotal(cartProducts.reduce((total, product) => +product.price + total, 0))
     }, [cartProducts])
 

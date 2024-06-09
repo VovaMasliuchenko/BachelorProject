@@ -4,7 +4,7 @@ import Router from './routes'
 function App() {
   return (
     <div className="App">
-      <ToastContainer />
+      <ToastContainer pauseOnFocusLoss={false} pauseOnHover={false}/>
       <Router/>
     </div>
   );

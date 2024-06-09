@@ -45,7 +45,7 @@ function FavoritesPage() {
 
     useEffect(() => {
         getFavoriteProducts()
-    }, [favoriteProducts])
+    }, [])
 
     return (
          <>

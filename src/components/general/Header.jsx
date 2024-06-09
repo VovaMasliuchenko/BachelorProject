@@ -18,6 +18,7 @@ function Header() {
 
   const [cartProducts, setCartProducts] = useState([]);
   const location = useLocation()
+  console.log(location.pathname)
   const cartProductsCollectionRef = collection(db, "cartProducts")
 
   const [userId, setUserId] = useState(sessionStorage.getItem("user-id")) || null
